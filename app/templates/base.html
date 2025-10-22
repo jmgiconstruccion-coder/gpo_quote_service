@@ -1,1 +1,107 @@
-<!doctype html><html><head><meta charset='utf-8'><style>@page{size:A4;margin:18mm 15mm;}body{font-family:Helvetica,Arial,sans-serif;font-size:11px;}th,td{border:1px solid #bbb;padding:6px;}th{background:#E0E0E0;}table{width:100%;border-collapse:collapse;}h1{text-align:center;} .footer{text-align:center;color:#4B0082;margin-top:10px;}</style></head><body><h1>COTIZACIÓN DE PANEL DE ALUMINIO</h1><b>Folio:</b>{{FOLIO}} <b>Fecha:</b>{{FECHA}}<br><b>Cliente:</b>{{CLIENTE}}<br><b>Obra:</b>{{UBICACION}}<br><b>Color:</b>{{COLOR}}<br><table><tr><th>Cantidad</th><th>Descripción</th><th>m²</th><th>Precio Unitario</th><th>Subtotal</th></tr>{{FILAS}}<tr><td colspan='4' align='right'>Subtotal</td><td>{{SUBTOTAL}}</td></tr><tr><td colspan='4' align='right'>IVA 16%</td><td>{{IVA}}</td></tr><tr><td colspan='4' align='right'><b>TOTAL</b></td><td><b>{{TOTAL}}</b></td></tr></table><div class='footer'><b>TODO EN ALUCOBOND</b><br>www.iconstruccion.com.mx | WhatsApp: 55 4988 8831</div></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cotización de Panel de Aluminio</title>
+  <style>
+    /* Siempre 1 hoja A4 compacta */
+    @page { size: A4; margin: 12mm 12mm 14mm 12mm; }
+    * { box-sizing: border-box; }
+    body { font-family: Arial, Helvetica, sans-serif; color:#000; font-size:10pt; }
+    .header { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+    .logo { height:28px; }
+    .company { text-align:right; font-size:9pt; line-height:1.25; }
+    h1 { text-align:center; font-size:13pt; margin:8px 0 10px; text-transform:uppercase; }
+
+    .meta { font-size:9.5pt; line-height:1.35; margin-bottom:6px; }
+    .meta b { font-weight:700; }
+
+    table { width:100%; border-collapse:collapse; table-layout:fixed; }
+    th, td { border:1px solid #777; padding:4px 6px; }
+    th { background:#EDEDED; font-weight:700; }
+    /* Columnas compactas y equilibradas */
+    colgroup col:nth-child(1){ width:10%; }
+    colgroup col:nth-child(2){ width:44%; }
+    colgroup col:nth-child(3){ width:13%; }
+    colgroup col:nth-child(4){ width:16%; }
+    colgroup col:nth-child(5){ width:17%; }
+    .right { text-align:right; }
+    .center { text-align:center; }
+    .total-row td { background:#FFF176; font-weight:700; }
+
+    .notes {
+      margin-top:8px; padding:8px; border:1px solid #BDBDBD;
+      background:#F5F5F5; font-size:8.6pt; line-height:1.35;
+      page-break-inside:avoid;
+    }
+    .footer {
+      text-align:center; color:#4B0082; font-weight:700; font-size:9.5pt; margin-top:8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img class="logo" src="data:image/png;base64,{{LOGO_B64}}">
+    <div class="company">
+      <b>GPOICONSTRUCCIÓN S.A. DE C.V.</b><br>
+      RFC: GIC2301019A9<br>
+      Benvenuto Cellini 122, Col. Alfonso XIII, Mixcoac, Álvaro Obregón, C.P. 01460, CDMX<br>
+      Tel: 55 4988 9830 • contacto@iconstruccion.com.mx
+    </div>
+  </div>
+
+  <h1>COTIZACIÓN DE PANEL DE ALUMINIO</h1>
+
+  <div class="meta">
+    <b>Folio:</b> {{FOLIO}} &nbsp;&nbsp; <b>Fecha:</b> {{FECHA}}<br>
+    <b>Cliente:</b> {{CLIENTE}}<br>
+    <b>Obra:</b> {{UBICACION}}<br>
+    <b>Color:</b> {{COLOR}}
+  </div>
+
+  <table>
+    <colgroup>
+      <col><col><col><col><col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th class="center">Cantidad</th>
+        <th>Descripción</th>
+        <th class="center">m² Totales</th>
+        <th class="right">Precio Unitario</th>
+        <th class="right">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{FILAS}}
+      <tr>
+        <td colspan="4" class="right"><b>SUBTOTAL</b></td>
+        <td class="right">{{SUBTOTAL}}</td>
+      </tr>
+      <tr>
+        <td colspan="4" class="right">IVA 16%</td>
+        <td class="right">{{IVA}}</td>
+      </tr>
+      <tr class="total-row">
+        <td colspan="4" class="right"><b>TOTAL</b></td>
+        <td class="right"><b>{{TOTAL}}</b></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <b>NOTAS IMPORTANTES</b><br>
+    • Los precios están sujetos a cambios sin previo aviso. <b>Vigencia: 5 días naturales.</b><br>
+    • Entrega inmediata o según inventario. <b>Cortes sin costo (1–3).</b><br>
+    • <b>Formas de pago:</b> Depósito o Transferencia a <b>Santander</b><br>
+    &nbsp;&nbsp;• Banco: Santander &nbsp;&nbsp;• Cuenta: <b>65502799802</b> &nbsp;&nbsp;• CLABE: <b>014180655027998029</b><br>
+    • Devolución únicamente por defectos de fábrica.<br>
+    • La facturación y cobro se realiza por <b>m² de panel</b>, no por m² expuestos.<br>
+    • No incluye fijaciones ni estructura metálica, salvo que se especifique.
+  </div>
+
+  <div class="footer">
+    TODO EN ALUCOBOND • www.iconstruccion.com.mx • WhatsApp: 55 4988 8831
+  </div>
+</body>
+</html>
